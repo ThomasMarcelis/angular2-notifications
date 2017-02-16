@@ -8,13 +8,15 @@
 		<div class="notificationIcon">
 			<img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
 			<div class="dropdown-content">
-				<div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index">
-					<h3>{{notification.title}}</h3>
-					<h4>{{notification.type}}</h4>			
+				<div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index" (click)="onNotificationClicked(notification)">
+					<h3>{{notification.id}}: {{notification.title}}</h3>
+					<h4>{{notification.type}}</h4>
+          <div class="notification-divider"></div>
 				</div>
+        <div class="show-all-notifications">Toon alle notificaties ({{notifications.length}})</div>
 			</div>
 		</div>
 
-		<div class="notifyBadge"><span>10</span></div>
+		<div class="notifyBadge" [hidden]="notifications.length <= 0"><span>{{notifications.length}}</span></div>
 	</div>
 </div>

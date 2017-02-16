@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {Notification} from "./notification";
 import {NotificationService} from "./notification.service";
 
@@ -8,7 +8,7 @@ import {NotificationService} from "./notification.service";
   styleUrls: ['./app.component.css'],
   providers: [NotificationService]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'app works!';
   notifications: Notification[];
   notificationService: NotificationService;
@@ -18,16 +18,13 @@ export class AppComponent implements OnInit {
     this.notificationService = notificationService;
     this.notifications = [];
     this.counter = 0;
-  }
-
-  ngOnInit(): void {
     this.notificationService.getNotificationStream().subscribe(
       (notifications) => {this.addNotification(notifications);}
     )
   }
 
   addNotification(notifications: Notification[]): void {
-    this.notifications = this.notifications.concat(notifications);
+    this.notifications = this.notifications.reverse().concat(notifications).reverse();
     this.counter = this.notifications.length;
   }
 
