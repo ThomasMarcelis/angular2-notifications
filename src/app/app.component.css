@@ -75,31 +75,45 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
 	display: none;
-	-webkit-box-shadow: -5px 8px 16px 0 rgba(0,0,0,.2);
-	box-shadow: -5px 8px 16px 0 rgba(0,0,0,.2);
+-webkit-box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
+box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
 	position: absolute;
 	width: 500px;
 	right: 0;
 	background: #fff;
 	top: 102px;
-  border-left: 1px solid #EEEEEE;
-  border-bottom: 1px solid #EEEEEE;
+	border-left: 1px solid #EEEEEE;
+	border-bottom: 1px solid #EEEEEE;
 }
 
-
+.notification-item-wrapper{
+  clear:both;
+  height: 93px;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+.notification-item-wrapper:hover {background-color: #f1f1f1}
 /* Links inside the dropdown */
 .dropdown-content .notification-item {
-  opacity: 1;
-  padding: 13px 29px 0px 29px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  -ms-transition: opacity 1s ease-in-out;
-  -o-transition: opacity 1s ease-in-out;
+	opacity: 1;
+	margin-right: 20px;
+	padding-bottom: 30px;
+
+	margin-right: 20px;
+	border-bottom: 1px solid #eee;
+  /*padding: 13px 29px 0px 29px;*/
+  /*margin-top: 10px;*/
+  /*margin-bottom: 10px;*/
 }
 
 .dropdown-content .removing {
+  height: 0;
   opacity: 0;
 }
 
@@ -110,17 +124,20 @@
   font-size: 14px;
   color: #333;
   padding: 13px 29px;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
   font-weight: 700;
   font-style: normal;
+
   text-decoration: underline;
   -webkit-text-decoration-color: #888;
   -moz-text-decoration-color: #888;  /* vendor prefix not required as of V36 */
   text-decoration-color: #888;
 }
-
+.dropdown-content .show-all-notifications:hover{
+	color:#00d193;
+}
 /* Change color of dropdown links on hover */
-.dropdown-content .notification-item:hover {background-color: #f1f1f1}
+/*.dropdown-content .notification-item:hover {background-color: #f1f1f1}*/
 .dropdown-content .notification-item h3{
   font-family: 'Arial-BoldMT', 'Arial Bold', 'Arial';
   font-weight: 700;
@@ -174,13 +191,6 @@
 .dropdown-content .notification-item .checkmarkWrapper .checkmarkerIcon:hover{
 	background-image: url("../assets/img/checkNewHover.svg");
 }
-.dropdown-content .notification-item .checkmarkWrapper:hover{
-	/*border-color: #00d193;*/
-	/*stroke: #00d193;*/
-}
-/*.dropdown-content .notification-item .checkmarkWrapper svg:hover{
-	color: #00d193;
-}*/
 /* Show the dropdown menu on hover */
 .dropdown:focus .dropdown-content {
   display: block;
@@ -193,9 +203,11 @@
 .notification-divider {
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #EEEEEE;
   margin-top: 15px;
   width: 90%;
-  content: "";
+  border-bottom: 1px solid #e2e2e2;
+}
 
+.no-border {
+  border:none;
 }

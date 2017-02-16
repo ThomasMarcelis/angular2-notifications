@@ -1,24 +1,27 @@
 <div class="bar">
-	<div class="logoWrapper">
-		<div class="logo">
-			<img src="../assets/img/bottomline_symbol_green_RGB.png" width="60" height="60" alt="logo">
-		</div>
-	</div>
-	<div class="notificationIconWrapper dropdown dropbtn" tabindex="0">
-		<div class="notificationIcon">
-			<img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
+  <div class="logoWrapper">
+    <div class="logo">
+      <img src="../assets/img/bottomline_symbol_green_RGB.png" width="60" height="60" alt="logo">
     </div>
-			<div class="dropdown-content">
-        <div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index" [ngClass]="{'removing': !displayed[notification.id] }">
+  </div>
+  <div class="notificationIconWrapper dropdown dropbtn" tabindex="0">
+    <div class="notificationIcon">
+      <img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
+    </div>
+    <div class="dropdown-content">
+      <div class="notification-item-wrapper" *ngFor="let notification of notifications | slice:0:3; let i=index"
+           [ngClass]="{'removing': !displayed[notification.id] }">
+        <div class="notification-item" ngClass="{'no-border': i< 2 && i+1 < notifications.length }">
+
           <div class="checkmarkWrapper" (click)="onNotificationClicked(notification, $event)">
             <div class="checkmarkerIcon"></div>
           </div>
-					<h3>{{notification.title}}</h3>
-					<h4>{{notification.type}}</h4>
-          <div class="notification-divider" *ngIf="i< 2 && i+1 < notifications.length"></div>
-				</div>
-        <div class="show-all-notifications">Alle notificaties ({{notifications.length}})</div>
-			</div>
-		<div class="notifyBadge" [hidden]="notifications.length <= 0"><span>{{notifications.length}}</span></div>
-	</div>
+          <h3>{{notification.id}}{{notification.title}}</h3>
+          <h4>{{notification.type}}</h4>
+        </div>
+      </div>
+      <div class="show-all-notifications">Alle notificaties ({{notifications.length}})</div>
+    </div>
+    <div class="notifyBadge" [hidden]="notifications.length <= 0"><span>{{notifications.length}}</span></div>
+  </div>
 </div>
