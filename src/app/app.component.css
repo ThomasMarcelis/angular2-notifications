@@ -75,7 +75,8 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
 	/*display: none;*/
-	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	-webkit-box-shadow: -5px 8px 16px 0 rgba(0,0,0,.2);
+	box-shadow: -5px 8px 16px 0 rgba(0,0,0,.2);
 	position: absolute;
 	width: 445px;
 	right: 0;
@@ -135,17 +136,30 @@
   line-height: normal;
 }
 .dropdown-content .notification-item .checkmarkWrapper{
-	border: 2px solid #000;
-	border-radius: 50%;
+	/*border: 2px solid #000;*/
+	/*border-radius: 50%;*/
 	float: right;
 
 	margin-right: 40px;
 	width: 27px;
 	height: 27px;
 }
-.dropdown-content .notification-item .checkmarkWrapper img{
+.dropdown-content .notification-item .checkmarkWrapper .checkmarkerIcon{
 	width: 100%;
+	height: 100%;	
+	background-image: url("../assets/img/checkNew.svg");
+	background-repeat: no-repeat;
 }
+.dropdown-content .notification-item .checkmarkWrapper .checkmarkerIcon:hover{
+	background-image: url("../assets/img/checkNewHover.svg");
+}
+.dropdown-content .notification-item .checkmarkWrapper:hover{
+	/*border-color: #00d193;*/
+	/*stroke: #00d193;*/
+}
+/*.dropdown-content .notification-item .checkmarkWrapper svg:hover{
+	color: #00d193;
+}*/
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
   display: block;
@@ -161,4 +175,3 @@
   content: "";
   margin-bottom: 0;
 }
-
