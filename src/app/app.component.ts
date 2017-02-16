@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Renderer} from '@angular/core';
 import {Notification} from "./notification";
 import {NotificationMockService} from "./mocks/notification-mock.service";
 
@@ -6,7 +6,8 @@ import {NotificationMockService} from "./mocks/notification-mock.service";
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [NotificationMockService]
+  providers: [NotificationMockService],
+
 })
 export class AppComponent {
   title = 'app works!';
@@ -14,7 +15,7 @@ export class AppComponent {
   notificationService: NotificationMockService;
   counter: number;
 
-  constructor(notificationService: NotificationMockService) {
+  constructor(notificationService: NotificationMockService, private renderer: Renderer) {
     this.notificationService = notificationService;
     this.notifications = [];
     this.counter = 0;
@@ -28,12 +29,23 @@ export class AppComponent {
     this.counter = this.notifications.length;
   }
 
-  onNotificationClicked(notification: Notification) {
-    let notificationIndex = this.notifications.indexOf(notification);
-    if(notificationIndex > -1) {
-      this.notifications.splice(notificationIndex, 1);
-      this.counter--;
-    }
+  onNotificationClicked(notification: Notification, event: any) {
+
+    let oldClasses = event.target.getAttribute('class');
+    this.renderer.setElementAttribute(event.target, "class", oldClasses + ' removing');
+
+    setTimeout(() => {
+
+        let notificationIndex = this.notifications.indexOf(notification);
+        if (notificationIndex > -1) {
+          this.notifications.splice(notificationIndex, 1);
+          this.counter--;
+        }
+      }, 500)
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }

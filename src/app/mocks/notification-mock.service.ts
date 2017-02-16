@@ -16,13 +16,13 @@ export class NotificationMockService {
         id: 0,
       },
       {
-        title: "This is a notifications",
-        type: "This is a type",
+        title: "Notification Title",
+        type: "another type",
         id: 1
       },
       {
-        title: "This is a notifications",
-        type: "This is a type",
+        title: "This is mock data",
+        type: "dont use in production",
         id: 2
       }
     ];
