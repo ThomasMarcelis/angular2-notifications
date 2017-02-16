@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import {Notification} from "./notification";
-import {NotificationService} from "./notification.service";
+import {NotificationMockService} from "./mocks/notification-mock.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [NotificationService]
+  providers: [NotificationMockService]
 })
 export class AppComponent {
   title = 'app works!';
   notifications: Notification[];
-  notificationService: NotificationService;
+  notificationService: NotificationMockService;
   counter: number;
 
-  constructor(notificationService: NotificationService) {
+  constructor(notificationService: NotificationMockService) {
     this.notificationService = notificationService;
     this.notifications = [];
     this.counter = 0;

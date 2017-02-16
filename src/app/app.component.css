@@ -46,7 +46,7 @@
 	position: absolute;
 	right: 57px;
 	top: 11px;
-	
+
 	color: white;
 	text-align: center;
 	font-weight: bolder;
@@ -78,21 +78,58 @@
 	right: 0;
 	background: #fff;
 	top: 102px;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 /* Links inside the dropdown */
 .dropdown-content .notification-item {
-  height: 80px;
   padding: 13px 29px;
+}
+
+.dropdown-content .show-all-notifications {
+  margin: 0;
+  background-color: rgba(218, 218, 218, 1);
+  text-decoration: underline;
+  font-size: 13px;
+  color: #6B6B6B;
+
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content .notification-item:hover {background-color: #f1f1f1}
 .dropdown-content .notification-item h3{
+  font-family: 'Arial-BoldMT', 'Arial Bold', 'Arial';
+  font-weight: 700;
+  font-style: normal;
   margin: 0;
+  font-size: 22px;
+  color: #494949;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
 }
+
 .dropdown-content .notification-item h4{
   margin: 0;
+  color: #494949;
+  background-color: rgba(228, 228, 228, 1);
+  border-width: 0;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 4px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
+  font-kerning: normal;
+  font-family: 'ArialMT', 'Arial';
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
 }
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -102,3 +139,11 @@
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
 }
+
+.notification-divider {
+  border-bottom: 1px solid black;
+  width: 80%;
+  content: "";
+  margin-bottom: 0;
+}
+
