@@ -9,12 +9,15 @@
 			<img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
 			<div class="dropdown-content">
 				<div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index">
+					<div class="checkmarkWrapper">
+						<img src="../assets/img/check.svg" alt="checkmark">			
+					</div>
 					<h3>{{notification.title}}</h3>
-					<h4>{{notification.type}}</h4>			
+					<h4>{{notification.type}}</h4>
 				</div>
 			</div>
 		</div>
-
 		<div class="notifyBadge"><span>10</span></div>
+
 	</div>
 </div>
