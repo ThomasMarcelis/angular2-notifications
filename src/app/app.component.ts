@@ -12,16 +12,31 @@ export class AppComponent implements OnInit {
   title = 'app works!';
   notifications: Notification[];
   notificationService: NotificationService;
+  counter: number;
 
   constructor(notificationService: NotificationService) {
     this.notificationService = notificationService;
-    console.error(notificationService);
+    this.notifications = [];
+    this.counter = 0;
   }
 
   ngOnInit(): void {
     this.notificationService.getNotificationStream().subscribe(
-      (notifications) => console.error(notifications)
+      (notifications) => {this.addNotification(notifications);}
     )
+  }
+
+  addNotification(notifications: Notification[]): void {
+    this.notifications = this.notifications.concat(notifications);
+    this.counter = this.notifications.length;
+  }
+
+  onNotificationClicked(notification: Notification) {
+    let notificationIndex = this.notifications.indexOf(notification);
+    if(notificationIndex > -1) {
+      this.notifications.splice(notificationIndex, 1);
+      this.counter--;
+    }
   }
 
 }
