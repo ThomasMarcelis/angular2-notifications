@@ -9,15 +9,17 @@
 			<img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
     </div>
 			<div class="dropdown-content">
-				<div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index" (click)="onNotificationClicked(notification, $event)" id="notification{{i}}">
-          <div class="checkmarkWrapper">
-            <img src="../assets/img/check.svg" alt="checkmark">
-          </div>
-					<h3>{{notification.title}}</h3>
-					<h4>{{notification.type}}</h4>
-          <div class="notification-divider" *ngIf="i< 2 && i+1 < notifications.length"></div>
+				<div class="notification-item-wrapper" *ngFor="let notification of notifications | slice:0:3; let i=index" (click)="onNotificationClicked(notification, $event)" id="notification{{i}}">
+					<div class="notification-item">
+						<div class="checkmarkWrapper">
+							<img src="../assets/img/check.svg" alt="checkmark">
+						</div>
+						<h3>{{notification.title}}</h3>
+						<h4>{{notification.type}}</h4>
+	          <!-- <div class="notification-divider" *ngIf="i< 2 && i+1 < notifications.length"></div> -->
+					</div>
 				</div>
-        <div class="show-all-notifications">Alle notificaties ({{notifications.length}})</div>
+        		<div class="show-all-notifications">Alle notificaties ({{notifications.length}})</div>
 			</div>
 		<div class="notifyBadge" [hidden]="notifications.length <= 0"><span>{{notifications.length}}</span></div>
 	</div>
