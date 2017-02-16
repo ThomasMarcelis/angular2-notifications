@@ -1,38 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Angular2 Notifications</title>
-
-	<link rel="stylesheet" href="app.component.css">
-</head>
-<body>
-	
-
 <div class="bar">
 	<div class="logoWrapper">
 		<div class="logo">
 			<img src="../assets/img/bottomline_symbol_green_RGB.png" width="60" height="60" alt="logo">
 		</div>
 	</div>
-	<div class="notificationIconWrapper">
+	<div class="notificationIconWrapper dropdown dropbtn">
 		<div class="notificationIcon">
 			<img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
+      <div class="dropdown-content">
+        <a href="#" *ngFor="let notification of notifications | slice:0:3; let i=index">{{notification.title}}</a>
+      </div>
 		</div>
 	</div>
 </div>
-
-
-<!-- <div class="bar">
-	<div class="logo"></div>
-	<div class="notificationIcon"></div>
-</div>
-<div class="bar">
-	<div class="logo"></div>
-	<div class="notificationIcon"></div>
-</div>
- -->
-
-
-</body>
-</html>
