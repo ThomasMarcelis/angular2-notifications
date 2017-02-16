@@ -23,10 +23,13 @@
 .bar .notificationIconWrapper{
 	height: 100%;
 	width: 175px;
-	background-color: rgb(0,209,147);
+	background-color: #00d193;
 	float: right;
 
 	position: relative;
+}
+.bar .notificationIconWrapper:hover{
+	background-color: #fff;
 }
 .bar .notificationIcon{
 	height: 100%;
@@ -72,7 +75,7 @@
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
 	/*display: none;*/
-	/*box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	position: absolute;
 	width: 445px;
 	right: 0;
