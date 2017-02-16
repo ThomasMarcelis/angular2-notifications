@@ -9,9 +9,9 @@
 			<img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
     </div>
 			<div class="dropdown-content">
-				<div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index" (click)="onNotificationClicked(notification, $event)" id="notification{{i}}">
-          <div class="checkmarkWrapper">
-            <img src="../assets/img/check.svg" alt="checkmark">
+        <div class="notification-item" *ngFor="let notification of notifications | slice:0:3; let i=index" [ngClass]="{'removing': !displayed[notification.id] }">
+          <div class="checkmarkWrapper" (click)="onNotificationClicked(notification, $event)">
+            <div class="checkmarkerIcon"></div>
           </div>
 					<h3>{{notification.title}}</h3>
 					<h4>{{notification.type}}</h4>

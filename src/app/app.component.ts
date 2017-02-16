@@ -1,38 +1,56 @@
 import {Component, Renderer} from '@angular/core';
 import {Notification} from "./notification";
-import {NotificationMockService} from "./mocks/notification-mock.service";
+import {NotificationService} from "./notification.service";
+
+interface idToBool {
+  [id: number]: boolean;
+}
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [NotificationMockService],
+  providers: [NotificationService],
 
 })
 export class AppComponent {
   title = 'app works!';
   notifications: Notification[];
-  notificationService: NotificationMockService;
+  displayed: idToBool;
+  notificationService: NotificationService;
   counter: number;
 
-  constructor(notificationService: NotificationMockService, private renderer: Renderer) {
+  constructor(notificationService: NotificationService) {
+    this.displayed = {};
     this.notificationService = notificationService;
     this.notifications = [];
     this.counter = 0;
+    console.log("hello");
     this.notificationService.getNotificationStream().subscribe(
       (notifications) => {this.addNotification(notifications);}
     )
   }
 
   addNotification(notifications: Notification[]): void {
-    this.notifications = this.notifications.reverse().concat(notifications).reverse();
+    if(!Array.isArray(notifications)) {
+      notifications = [ notifications ];
+    }
+
+    for(let notification of notifications) {
+      this.displayed[notification.id] = false;
+      this.notifications.unshift(notification);
+      setTimeout(() => {
+        this.displayed[notification.id] = true;
+      }, 50)
+    }
+
     this.counter = this.notifications.length;
   }
 
   onNotificationClicked(notification: Notification, event: any) {
 
-    let oldClasses = event.target.getAttribute('class');
-    this.renderer.setElementAttribute(event.target, "class", oldClasses + ' removing');
+    this.displayed[notification.id] = false;
+
 
     setTimeout(() => {
 

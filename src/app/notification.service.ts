@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Notification} from './notification';
 
+
 @Injectable()
 export class NotificationService implements OnInit{
   private timer;
@@ -12,7 +13,7 @@ export class NotificationService implements OnInit{
 
   constructor() {
     this.idCounter = 0;
-    this.timer = Observable.interval(3000)
+    this.timer = Observable.interval(10000)
       .flatMap(() => {
         return this.getNotification();
       });
