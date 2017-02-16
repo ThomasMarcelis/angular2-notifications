@@ -41,7 +41,7 @@ export class AppComponent {
           this.notifications.splice(notificationIndex, 1);
           this.counter--;
         }
-      }, 500)
+      }, 1000)
   }
 
   delay(ms: number) {
