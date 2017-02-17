@@ -40,7 +40,7 @@ export class AppComponent {
 
     for(let notification of notifications) {
       this.displayed[notification.id] = false;
-      this.notifications.push(notification);
+      this.notifications.unshift(notification);
       if(this.amountDisplayed < 3) {
         this.display(notification)
       }
@@ -72,16 +72,22 @@ export class AppComponent {
         this.counter--;
 
 
+        let reduceAmount = 1;
+        let addedNotification: Notification = undefined;
         if(this.notifications.length > 2) {
-          this.displayed[this.notifications[this.notifications.length-1].id] = false;
-          this.forUser.push(this.notifications[this.notifications.length-1]);
+          while(this.forUser.includes(this.notifications[this.notifications.length-reduceAmount])) {
+            reduceAmount++;
+          }
+          addedNotification = this.notifications[this.notifications.length-reduceAmount];
+          this.displayed[addedNotification.id] = false;
+          this.forUser.push(addedNotification);
         } else {
           this.amountDisplayed--;
         }
 
       setTimeout(() => {
       this.displayed[notification.id] = false;
-      this.displayed[this.notifications[this.notifications.length-1].id] = true
+      this.displayed[addedNotification.id] = true
       }, 100)
       setTimeout(() => {
         let notificationIndex = this.forUser.indexOf(notification);
