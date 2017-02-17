@@ -87,21 +87,20 @@ box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
 }
 
 .notification-item-wrapper{
-  clear:both;
-  height: 93px;
+  opacity: 0;
+  height: 0;
+  padding: 0;
 	padding-left: 20px;
-	padding-top: 20px;
-	padding-right: 0px;
-	padding-bottom: 0px;
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -ms-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
+  margin: 0;
+  clear:both;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
 }
 .notification-item-wrapper:hover {background-color: #f1f1f1}
 /* Links inside the dropdown */
 .dropdown-content .notification-item {
-	opacity: 1;
 	margin-right: 20px;
 	padding-bottom: 30px;
 
@@ -112,9 +111,16 @@ box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
   /*margin-bottom: 10px;*/
 }
 
-.dropdown-content .removing {
-  height: 0;
-  opacity: 0;
+.dropdown-content .show {
+  opacity: 1;
+  height: 100%;
+	padding-top: 20px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
 }
 
 .dropdown-content .show-all-notifications {
@@ -149,6 +155,27 @@ box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
   font-feature-settings: "kern" 1;
   -moz-font-feature-settings: "kern";
   -moz-font-feature-settings: "kern=1";
+  -webkit-transition: height 0.4s ease-in-out;
+  -moz-transition: height 0.4s ease-in-out;
+  -ms-transition: height 0.4s ease-in-out;
+  -o-transition: height 0.4s ease-in-out;
+}
+
+.dropdown-content .notification-item:hover h3{
+  color:#00d193
+}
+
+.dropdown-content .remove-height {
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
+.dropdown-content .notification-item .checkmarkWrapper.remove-height{
+  height: 0;
 }
 
 .dropdown-content .notification-item h4{
@@ -171,7 +198,12 @@ box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
   font-weight: 400;
   font-style: normal;
   line-height: normal;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
 }
+
 .dropdown-content .notification-item .checkmarkWrapper{
 	/*border: 2px solid #000;*/
 	/*border-radius: 50%;*/
@@ -194,6 +226,10 @@ box-shadow: -8px 16px 16px 0 rgba(0,0,0,.2);
 /* Show the dropdown menu on hover */
 .dropdown:focus .dropdown-content {
   display: block;
+}
+
+.dropdown-content .notification-item .checkmarkWrapper:hover + h3{
+  color: #494949;
 }
 
 .dropdown:focus {

@@ -9,15 +9,15 @@
       <img src="../assets/img/report-problem-triangle.svg" alt="report-problem-triangle">
     </div>
     <div class="dropdown-content">
-      <div class="notification-item-wrapper" *ngFor="let notification of notifications | slice:0:3; let i=index"
-           [ngClass]="{'removing': !displayed[notification.id] }">
-        <div class="notification-item" ngClass="{'no-border': i< 2 && i+1 < notifications.length }">
+      <div class="notification-item-wrapper" *ngFor="let notification of forUser"
+           [ngClass]="{'show': displayed[notification.id] }">
+        <div class="notification-item" [ngClass]="{'no-border': i< 2 && i+1 < notifications.length }">
 
-          <div class="checkmarkWrapper" (click)="onNotificationClicked(notification, $event)">
-            <div class="checkmarkerIcon"></div>
+          <div  [ngClass]="{'remove-height': !displayed[notification.id] }" class="checkmarkWrapper" (click)="onNotificationClicked(notification, $event)">
+            <div [ngClass]="{'remove-height': !displayed[notification.id] }"  class="checkmarkerIcon"></div>
           </div>
-          <h3>{{notification.id}}{{notification.title}}</h3>
-          <h4>{{notification.type}}</h4>
+          <h3 [ngClass]="{'remove-height': !displayed[notification.id] }" >{{notification.id}}{{notification.title}}</h3>
+          <h4 [ngClass]="{'remove-height': !displayed[notification.id] }" >{{notification.type}}</h4>
         </div>
       </div>
       <div class="show-all-notifications">Alle notificaties ({{notifications.length}})</div>

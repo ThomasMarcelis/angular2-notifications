@@ -14,18 +14,20 @@ interface idToBool {
 
 })
 export class AppComponent {
-  title = 'app works!';
   notifications: Notification[];
   displayed: idToBool;
+  amountDisplayed: number;
+  forUser: Notification[];
   notificationService: NotificationService;
   counter: number;
 
   constructor(notificationService: NotificationService) {
     this.displayed = {};
+    this.forUser = [];
+    this.amountDisplayed = 0;
     this.notificationService = notificationService;
     this.notifications = [];
     this.counter = 0;
-    console.log("hello");
     this.notificationService.getNotificationStream().subscribe(
       (notifications) => {this.addNotification(notifications);}
     )
@@ -38,32 +40,58 @@ export class AppComponent {
 
     for(let notification of notifications) {
       this.displayed[notification.id] = false;
-      this.notifications.unshift(notification);
-      setTimeout(() => {
-        this.displayed[notification.id] = true;
-      }, 50)
+      this.notifications.push(notification);
+      if(this.amountDisplayed < 3) {
+        this.display(notification)
+      }
     }
+
 
     this.counter = this.notifications.length;
   }
 
   onNotificationClicked(notification: Notification, event: any) {
 
-    this.displayed[notification.id] = false;
+    this.removeFromDisplay(notification);
 
 
+  }
+
+  display(notification: Notification) {
+    this.forUser.push(notification);
+    this.amountDisplayed++;
     setTimeout(() => {
+      this.displayed[notification.id] = true;
+      }, 100)
+  }
 
-        let notificationIndex = this.notifications.indexOf(notification);
-        if (notificationIndex > -1) {
-          this.notifications.splice(notificationIndex, 1);
-          this.counter--;
+  removeFromDisplay(notification: Notification) {
+      let notificationIndex = this.notifications.indexOf(notification);
+      if (notificationIndex > -1) {
+        this.notifications.splice(notificationIndex, 1);
+        this.counter--;
+
+
+        if(this.notifications.length > 2) {
+          this.displayed[this.notifications[this.notifications.length-1].id] = false;
+          this.forUser.push(this.notifications[this.notifications.length-1]);
+        } else {
+          this.amountDisplayed--;
         }
-      }, 1000)
+
+      setTimeout(() => {
+      this.displayed[notification.id] = false;
+      this.displayed[this.notifications[this.notifications.length-1].id] = true
+      }, 100)
+      setTimeout(() => {
+        let notificationIndex = this.forUser.indexOf(notification);
+        if (notificationIndex > -1) {
+          this.forUser.splice(notificationIndex, 1);
+        }
+      }, 500)
+
+    }
   }
 
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
 
 }

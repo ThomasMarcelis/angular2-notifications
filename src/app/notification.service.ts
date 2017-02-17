@@ -13,7 +13,7 @@ export class NotificationService implements OnInit{
 
   constructor() {
     this.idCounter = 0;
-    this.timer = Observable.interval(3000)
+    this.timer = Observable.interval(5000)
       .flatMap(() => {
         return this.getNotification();
       });
