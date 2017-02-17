@@ -29,13 +29,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 
-  it(`should have as title 'app works!'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
-  }));
-
-  it('should remove a notification when clicked', async(() => {
+  it('should remove a notification when clicked', () => {
 
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
@@ -46,7 +40,7 @@ describe('AppComponent', () => {
 
     app.onNotificationClicked(randomNotification);
 
-    expect(app.notifications.length).toEqual(l-1);
+    expect(app.notifications.includes(randomNotification)).toBeFalsy();
 
     }));
 
